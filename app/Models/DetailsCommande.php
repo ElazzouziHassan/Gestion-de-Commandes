@@ -9,5 +9,5 @@ class DetailsCommande extends Model
 {
     use HasFactory;
     protected $table = 'détails_commandes';
-    protected $fillable = ['quantite', 'commande_id', 'produit_id' ];
+    protected $fillable = ['quantite', 'prix' , 'commande_id', 'produit_id' ];
 }

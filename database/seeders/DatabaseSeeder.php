@@ -16,16 +16,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        Produit::factory()->count(15)->create();
-        Client::factory()
-        ->has(Commande::factory()->count(4))
-        ->count(8)->hasAttached(Produit::factory()
-        ->count(rand(1,15)),['quantite'=>rand(1,15),'prix'=>rand(5,20)])->create();
+        Client::factory()->count(10)->create()->each(
+            function ($client){
+                Commande::factory()->count(5)->create(
+                  [ 'client_id' => $client->id ])->each(
+                        function ($commande){
+                            $produits = Produit::factory()->count(rand(1, 5))->create();
+                            foreach ($produits as $produit) {
+                                $commande->produits()->attach($produit, [
+                                    'quantite' => rand(1, 10),
+                                    'prix' => rand(10, 100),
+                                ]);
+                            }
+                        }
+                );
+            }
+        );
+        
     }
 }

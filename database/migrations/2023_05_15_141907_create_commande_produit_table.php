@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::create('détails_commandes', function (Blueprint $table) {
+        Schema::create('commande_produit', function (Blueprint $table) {
             $table->primary(['produit_id', 'commande_id']);
             $table->integer('quantite');
+            $table->float('prix');
             $table->timestamps();
             $table->unsignedBigInteger('produit_id');
             $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');

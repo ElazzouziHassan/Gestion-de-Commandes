@@ -22,6 +22,7 @@ class DeatailsCommandeFactory extends Factory
             'commande_id'=>Commande::factory(),
             'produit_id'=>Produit::factory(),
             'quantite'=>$this->faker->randomNumber(),
+            'prix'=>$this->faker->randomFloat(),
         ];
     }
 }
