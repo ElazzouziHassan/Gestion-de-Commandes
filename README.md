@@ -89,6 +89,20 @@ class CommandeController extends Controller
     }
 }
 ```
+# les routes:
+routes/web.php
+```php
+use App\Http\Controllers\CommandeController;
+
+Route::group([], function () {
+    Route::get('/', [CommandeController::class, 'index']);
+    Route::get('/commandes/create', [CommandeController::class, 'create']);
+    Route::post('/commande', [CommandeController::class, 'store']);
+    Route::get('/commandes/{commande}/edit', [CommandeController::class, 'edit']);
+    Route::put('/commandes/{commande}', [CommandeController::class, 'update']);
+    Route::delete('/commandes/{commande}', [CommandeController::class, 'destroy']);
+});
+```
 ## 3 - Création des modèles Eloquent pour chacune des tables
 
 - Pour la table `Client`
