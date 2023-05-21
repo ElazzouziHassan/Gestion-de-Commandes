@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commande;
+use App\Models\DetailsCommande;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
 {
     public function index()
     {
-        $commandes = Commande::paginate(10);
+        // $commandes = Commande::paginate(10);
+        $commandes = Commande::with('produits')->paginate(10);
         return view ('commandes.index')->with('commandes', $commandes);
     }
     
 
     public function create()
     {
-        $commandes = Commande::paginate(10);
+        $commandes = Commande::all();
         return view('commandes.create')->with('commandes', $commandes);
     }
 

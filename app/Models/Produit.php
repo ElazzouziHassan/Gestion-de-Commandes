@@ -14,6 +14,8 @@ class Produit extends Model
     protected $fillable = ['Libelle', 'Couleur', 'Prix' , 'QteStk'];
     public function Commandes()
     {
-        return $this->belongsToMany(Commande::class);
+        // return $this->belongsToMany(Commande::class);
+        return $this->belongsToMany(Commande::class, 'commande_produit')
+            ->withPivot('quantite', 'prix');
     }
 }

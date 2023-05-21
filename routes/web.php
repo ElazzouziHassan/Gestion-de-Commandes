@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommandeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ Route::group([], function () {
     Route::put('/commandes/{commande}', [CommandeController::class, 'update']);
     Route::delete('/commandes/{commande}', [CommandeController::class, 'destroy']);
 });
+
+// Route::get('/login', [AuthController::class,'authentication.login']);
