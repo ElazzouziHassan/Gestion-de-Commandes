@@ -30,6 +30,11 @@ class CommandeController extends Controller
         Commande::create($request->all());
         return redirect('commandes.index')->with('success', 'Commande Added!');
     }
+    public function show(string $id)
+    {
+        $commande = Commande::find($id);
+        return view('commandes.show')->with('commandes', $commande);
+    }
 
     public function edit(string $id)
     {

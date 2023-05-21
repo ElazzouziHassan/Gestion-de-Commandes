@@ -21,6 +21,7 @@ Route::group([], function () {
     Route::get('/commandes/{commande}/edit', [CommandeController::class, 'edit']);
     Route::put('/commandes/{commande}', [CommandeController::class, 'update']);
     Route::delete('/commandes/{commande}', [CommandeController::class, 'destroy']);
+    Route::resource("/commande", CommandeController::class);
 });
 
 // Route::get('/login', [AuthController::class,'authentication.login']);

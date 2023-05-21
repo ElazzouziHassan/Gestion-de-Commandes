@@ -34,7 +34,7 @@
                                         <td>{{ $item->produits[0]->pivot->prix }} MAD</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            <a href="{{ url('/commande/' . $item->id) }}" title="View commande"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/commandes/' . $item->id) }}" title="View commande"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/commande/' . $item->id . '/edit') }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
   
                                             <form method="POST" action="{{ url('/commande' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
