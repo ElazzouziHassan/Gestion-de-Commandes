@@ -49,7 +49,9 @@
                                 </tbody>
                             </table>
                         </div>
-  
+                        <div class="d-felx justify-content-center">
+                            {{ $commandes->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
             </div>
