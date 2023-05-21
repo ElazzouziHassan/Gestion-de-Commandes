@@ -1,7 +1,7 @@
 @extends('commandes.layout')
 @section('content')
     <div class="container">
-        <div class="row" style="margin:5px;">
+        <div class="row" >
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background:#8294C4;">
