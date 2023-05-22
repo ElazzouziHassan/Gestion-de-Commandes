@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Commande;
 use App\Models\DetailsCommande;
+use App\Models\Produit;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -18,8 +19,9 @@ class CommandeController extends Controller
 
     public function create()
     {
-        $commandes = Commande::all();
-        return view('commandes.create')->with('commandes', $commandes);
+        // $commandes = Commande::all();
+        $produits = Produit::all();
+        return view('commandes.create')->with('produits', $produits);
     }
 
     public function store(Request $request)

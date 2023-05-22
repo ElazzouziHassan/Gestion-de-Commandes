@@ -1,8 +1,8 @@
 @extends('commandes.layout')
 @section('content')
     <div class="container">
-        <div class="row" >
-            <div class="col-12">
+        <div class="row" style="display:flex;justify-content:center">
+            <div class="col-10">
                 <div class="card">
                     <div class="card-header" style="background:#8294C4;">
                         <h2 style="text-align: center">LARAVEL CRUD : GESTION DES COMMANDES</h2>
@@ -18,9 +18,6 @@
                                 <thead>
                                     <tr>
                                         <th>Commande ID</th>
-                                        <th>Produit</th>
-                                        <th>Quantité</th>
-                                        <th>Prix</th>
                                         <th>Date de commande</th>
                                         <th>Actions</th>
                                     </tr>
@@ -29,9 +26,6 @@
                                 @foreach($commandes as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->produits[0]->Libelle }}</td>
-                                        <td>{{ $item->produits[0]->pivot->quantite }}</td>
-                                        <td>{{ $item->produits[0]->pivot->prix }} MAD</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ url('/commandes/' . $item->id) }}" title="View commande"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
