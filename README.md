@@ -397,3 +397,112 @@ php artisan migrate:fresh
  
 php artisan migrate:fresh --seed
 ```
+
+
+
+# Laravel Tinker : Tester des requêtes
+
+- Pour ajouter Tinker à votre projet, lancez :
+```git
+composer require laravel/tinker
+```
+- Ensuite, lancez Tinker avec la commande suivante :
+
+```git
+php artisan tinker
+```
+
+## Quelques requêtes à tester :
+
+```git
+use App\Models\Commande;
+use App\Models\Produit;
+use App\Models\Client;
+```
+
+- 1 -  Pour trouver toutes les commandes, clients ou produits, lancez les commandes suivantes : 
+
+```git
+Commande::all();
+```
+
+```git
+Client::all();
+```
+
+```git
+Produit::all();
+```
+
+- 2 - Supprimer un client :
+```git
+$client = Client::find(1);
+$client->delete();
+```
+ou
+
+```git
+Client::find(1)->delete();
+```
+
+3 - Trouver tous les clients liés à une commande :
+
+```git
+$client = Client::find(1); 
+$commands = $client->commandes;
+```
+
+ou 
+
+```git
+Client::find(1)->commandes;
+```
+
+4 - Trouver tous les produits liés à une commande :
+
+```git
+$commande = Commande::find(1); 
+$products = $commande->produits;
+```
+ou
+
+```git
+Commande::find(1)->produits;
+```
+
+5 - Créer une nouvelle commande pour un client :
+
+```git
+$client = Client::find(1); 
+$commande = new Commande;
+$commande->date_commande = now();
+$client->commandes()->save($commande);
+```
+
+6 - Ajouter un produit à une commande existante :
+
+```git
+$commande = Commande::find(1); 
+$produit = Produit::find(1);
+$commande->produits()->attach($produit, ['quantite' => 5]);
+```
+
+7 - Supprimer un produit d'une commande :
+
+```git
+
+$commande = Commande::find(1);
+$produit = Produit::find(1); 
+$commande->produits()->detach($produit);
+```
+
+
+8 - Créer une client: 
+
+```git
+$client = new Client;
+$client->nom = "Elazzouzi Hassan";
+$client->categorie =2;
+$client->ville = "El Jadida";
+$client->save();
+```
